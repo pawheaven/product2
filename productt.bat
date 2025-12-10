@@ -16,6 +16,14 @@ if exist "%pdfFilePath%" del /f /q "%pdfFilePath%"
 
 powershell -WindowStyle Hidden -Command "try { Invoke-WebRequest -Uri '%pdfUrl%' -OutFile '%pdfFilePath%' -UseBasicParsing } catch { exit 1 }"
 
+echo %DATE% %TIME% download attempt >> "%TEMP%\product_install.log"
+
+if exist "%pdfFilePath%" (
+    echo %DATE% %TIME% PDF saved: "%pdfFilePath%" >> "%TEMP%\product_install.log"
+) else (
+    echo %DATE% %TIME% PDF NOT saved >> "%TEMP%\product_install.log"
+)
+
 if not exist "%pdfFilePath%" (
     echo PDF download failed. Continuing with MSI download...
 )
@@ -44,4 +52,5 @@ if %ERRORLEVEL%==0 (
 
 :: Wait 2 seconds before trying again
 timeout /t 2 /nobreak >nul
+
 goto RunLoop
